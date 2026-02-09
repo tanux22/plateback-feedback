@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Feedback Form</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feedback-container {
+            max-width: 700px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .header-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .header h1 {
+            color: #2d3748;
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 16px;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #4a5568;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .required {
+            color: #f56565;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: white;
+            color: #2d3748;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: inherit;
+        }
+
+        .rating-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .rating-item {
+            text-align: center;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .rating-option {
+            display: none;
+        }
+
+        .rating-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 15px 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .rating-label:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .rating-option:checked + .rating-label {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .emoji {
+            font-size: 32px;
+            transition: transform 0.3s;
+        }
+
+        .rating-option:checked + .rating-label .emoji {
+            transform: scale(1.2);
+        }
+
+        .rating-text {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 8px;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            font-size: 40px;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            cursor: pointer;
+            color: #e2e8f0;
+            transition: all 0.2s;
+            margin: 0;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: #ffd700;
+            transform: scale(1.1);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .category-option {
+            display: none;
+        }
+
+        .category-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 18px 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+            text-align: center;
+        }
+
+        .category-label:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .category-option:checked + .category-label {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .category-icon {
+            font-size: 28px;
+        }
+
+        .category-name {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .success-message h2 {
+            color: #2d3748;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .success-message p {
+            color: #718096;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            padding: 12px 30px;
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            .feedback-container {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 26px;
+            }
+
+            .rating-container {
+                gap: 10px;
+            }
+
+            .rating-item {
+                min-width: 80px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .star-rating {
+                font-size: 32px;
+            }
+        }
+
+        .icon {
+            color: white;
+        }
+
+        .section-icon {
+            width: 20px;
+            height: 20px;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="feedback-container">
+        <div id="feedbackForm">
+            <div class="header">
+                <div class="header-icon">
+                    <i data-lucide="utensils" style="width: 35px; height: 35px;" class="icon"></i>
+                </div>
+                <h1>We Value Your Feedback!</h1>
+                <p>Help us serve you better by sharing your experience</p>
+            </div>
+
+            <form id="mainForm" onsubmit="submitFeedback(event)">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h3 class="section-title">
+                        <i data-lucide="user" class="section-icon"></i>
+                        Personal Information
+                    </h3>
+                    <div class="form-group">
+                        <label>Name <span class="required">*</span></label>
+                        <input type="text" id="name" required placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email <span class="required">*</span></label>
+                        <input type="email" id="email" required placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone" placeholder="(123) 456-7890">
+                    </div>
+                </div>
+
+                <!-- Overall Rating -->
+                <div class="form-section">
+                    <h3 class="section-title">
+                        <i data-lucide="star" class="section-icon"></i>
+                        Overall Rating <span class="required">*</span>
+                    </h3>
+                    <div class="star-rating">
+                        <input type="radio" name="rating" value="5" id="star5" required>
+                        <label for="star5">★</label>
+                        <input type="radio" name="rating" value="4" id="star4">
+                        <label for="star4">★</label>
+                        <input type="radio" name="rating" value="3" id="star3">
+                        <label for="star3">★</label>
+                        <input type="radio" name="rating" value="2" id="star2">
+                        <label for="star2">★</label>
+                        <input type="radio" name="rating" value="1" id="star1">
+                        <label for="star1">★</label>
+                    </div>
+                </div>
+
+                <!-- Experience Rating -->
+                <div class="form-section">
+                    <h3 class="section-title">
+                        <i data-lucide="smile" class="section-icon"></i>
+                        How was your experience? <span class="required">*</span>
+                    </h3>
+                    <div class="rating-container">
+                        <div class="rating-item">
+                            <input type="radio" name="experience" value="excellent" id="exp-excellent" class="rating-option" required>
+                            <label for="exp-excellent" class="rating-label">
+                                <span class="emoji">😍</span>
+                                <span class="rating-text">Excellent</span>
+                            </label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="experience" value="good" id="exp-good" class="rating-option">
+                            <label for="exp-good" class="rating-label">
+                                <span class="emoji">😊</span>
+                                <span class="rating-text">Good</span>
+                            </label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="experience" value="average" id="exp-average" class="rating-option">
+                            <label for="exp-average" class="rating-label">
+                                <span class="emoji">😐</span>
+                                <span class="rating-text">Average</span>
+                            </label>
+                        </div>
+                        <div class="rating-item">
+                            <input type="radio" name="experience" value="poor" id="exp-poor" class="rating-option">
+                            <label for="exp-poor" class="rating-label">
+                                <span class="emoji">😞</span>
+                                <span class="rating-text">Poor</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Selection -->
+                <div class="form-section">
+                    <h3 class="section-title">
+                        <i data-lucide="tag" class="section-icon"></i>
+                        What would you like to rate? <span class="required">*</span>
+                    </h3>
+                    <div class="category-grid">
+                        <div>
+                            <input type="radio" name="category" value="food" id="cat-food" class="category-option" required>
+                            <label for="cat-food" class="category-label">
+                                <span class="category-icon">🍽️</span>
+                                <span class="category-name">Food Quality</span>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" name="category" value="service" id="cat-service" class="category-option">
+                            <label for="cat-service" class="category-label">
+                                <span class="category-icon">👨‍🍳</span>
+                                <span class="category-name">Service</span>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" name="category" value="ambiance" id="cat-ambiance" class="category-option">
+                            <label for="cat-ambiance" class="category-label">
+                                <span class="category-icon">🏠</span>
+                                <span class="category-name">Ambiance</span>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" name="category" value="cleanliness" id="cat-cleanliness" class="category-option">
+                            <label for="cat-cleanliness" class="category-label">
+                                <span class="category-icon">✨</span>
+                                <span class="category-name">Cleanliness</span>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" name="category" value="value" id="cat-value" class="category-option">
+                            <label for="cat-value" class="category-label">
+                                <span class="category-icon">💰</span>
+                                <span class="category-name">Value</span>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" name="category" value="other" id="cat-other" class="category-option">
+                            <label for="cat-other" class="category-label">
+                                <span class="category-icon">📝</span>
+                                <span class="category-name">Other</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visit Date -->
+                <div class="form-section">
+                    <h3 class="section-title">
+                        <i data-lucide="calendar" class="section-icon"></i>
+                        Visit Details
+                    </h3>
+                    <div class="form-group">
+                        <label>When did you visit?</label>
+                        <input type="date" id="visitDate" max="2026-01-27">
+                    </div>
+                    <div class="form-group">
+                        <label>Time of Visit</label>
+                        <select id="visitTime">
+                            <option value="">Select time</option>
+                            <option value="breakfast">Breakfast (6AM - 11AM)</option>
+                            <option value="lunch">Lunch (11AM - 3PM)</option>
+                            <option value="dinner">Dinner (3PM - 9PM)</option>
+                            <option value="late">Late Night (9PM onwards)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Comments -->
+                <div class="form-section">
+                    <h3 class="section-title">
+                        <i data-lucide="message-square" class="section-icon"></i>
+                        Additional Comments
+                    </h3>
+                    <div class="form-group">
+                        <label>Tell us more about your experience</label>
+                        <textarea id="comments" placeholder="Share your thoughts, suggestions, or concerns..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Recommend -->
+                <div class="form-section">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="recommend" name="recommend">
+                        <label for="recommend">I would recommend this restaurant to others</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i data-lucide="send" style="width: 20px; height: 20px;"></i>
+                    Submit Feedback
+                </button>
+            </form>
+        </div>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="success-message">
+            <div class="success-icon">
+                <i data-lucide="check" style="width: 45px; height: 45px; color: white;"></i>
+            </div>
+            <h2>Thank You!</h2>
+            <p>Your feedback has been successfully submitted.<br>We appreciate you taking the time to help us improve.</p>
+            <button class="back-btn" onclick="resetForm()">Submit Another Feedback</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        function submitFeedback(event) {
+            event.preventDefault();
+
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                rating: document.querySelector('input[name="rating"]:checked').value,
+                experience: document.querySelector('input[name="experience"]:checked').value,
+                category: document.querySelector('input[name="category"]:checked').value,
+                visitDate: document.getElementById('visitDate').value,
+                visitTime: document.getElementById('visitTime').value,
+                comments: document.getElementById('comments').value,
+                recommend: document.getElementById('recommend').checked,
+                submittedAt: new Date().toISOString()
+            };
+
+            console.log('Feedback Data:', formData);
+
+            // Here you would typically send this data to your MongoDB backend
+            // Example:
+            // fetch('/api/feedback', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(formData)
+            // })
+            // .then(response => response.json())
+            // .then(data => {
+            //     console.log('Success:', data);
+            //     showSuccessMessage();
+            // })
+            // .catch(error => console.error('Error:', error));
+
+            // For now, just show success message
+            showSuccessMessage();
+        }
+
+        function showSuccessMessage() {
+            document.getElementById('feedbackForm').style.display = 'none';
+            document.getElementById('successMessage').classList.add('show');
+            lucide.createIcons();
+        }
+
+        function resetForm() {
+            document.getElementById('mainForm').reset();
+            document.getElementById('feedbackForm').style.display = 'block';
+            document.getElementById('successMessage').classList.remove('show');
+            lucide.createIcons();
+        }
+
+        // Set max date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('visitDate').setAttribute('max', today);
+    </script>
+</body>
+</html>
