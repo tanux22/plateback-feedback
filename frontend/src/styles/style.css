@@ -1,0 +1,678 @@
+/* Google Fonts Link */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+
+/* Resetting default styling and setting font-family */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 10px;
+    display: flex;
+    background: #626cd6;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login form styling */
+.login_form {
+    width: 100%;
+    max-width: 435px;
+    background: #fff;
+    border-radius: 6px;
+    padding: 41px 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.signup_form {
+    width: 100%;
+    max-width: 435px;
+    background: #fff;
+    border-radius: 6px;
+    padding: 41px 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.login_form h3 {
+    font-size: 20px;
+    text-align: center;
+}
+
+.signup_form h3 {
+    font-size: 20px;
+    text-align: center;
+}
+
+.subtitle{
+
+    text-align:center;
+    color:#666;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+
+
+
+form .input_box label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+/* Input field styling */
+form .input_box input {
+    width: 100%;
+    height: 57px;
+    border: 1px solid #DADAF2;
+    border-radius: 5px;
+    outline: none;
+    background: #F8F8FB;
+    font-size: 17px;
+    padding: 0px 20px;
+    margin-bottom: 25px;
+    transition: 0.2s ease;
+}
+
+form .input_box input:focus {
+    border-color: #626cd6;
+}
+
+form .input_box .password_title {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+form .input_box {
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: #626cd6;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Login button styling */
+form button {
+    width: 100%;
+    height: 56px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background: #626CD6;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-bottom: 28px;
+    transition: 0.3s ease;
+}
+
+form button:hover {
+    background: #4954d0;
+}
+
+
+
+body{
+    background:linear-gradient(135deg,#667eea,#764ba2);
+}
+
+.signup_form{
+
+    backdrop-filter:blur(10px);
+    border-radius:12px;
+    padding:45px 35px;
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+}
+
+form button{
+    box-shadow: 0 8px 20px rgba(98,108,214,0.4);
+}
+
+form button:hover{
+    box-shadow:0 10px 25px rgba(98,108,214,0.6);
+    transform:translateY(-1px);
+}
+
+form.input_box input:focus{
+    border-color:#764ba2;
+    box-shadow:0 0 0 2px rgba(118,75,162,0.2);
+    background:#fff;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+button :disabled{
+
+    background:#b5b9f3;
+    cursor:not-allowed;
+    opacity:0.6;
+}
+
+button:disabled:hover{
+
+    background:#b5b9f3;
+    transform:none;
+    box-shadow:none;
+}
+
+.form-title{
+
+    text-align:center;
+    font-size:28px;
+    font-weight:700;
+    letter-spacing:0.5px;
+    color:#1f2937;
+    margin-bottom:6px;
+}
+
+.form-subtitle{
+
+    text-align:center;
+    font-size:14.5px;
+    color:#6b7280;
+    margin-bottom:28px;
+    line-height:1.6;
+
+}
+
+.login_form , .signup_form{
+
+    animation:fadeIn 0.6s ease-out;
+}
+
+
+
+ .subtitle{
+
+    text-align:center;
+    font-size:14.5px;
+    font-weight:500;
+    color:#626cd6;
+    line-height:1.8;
+    max-width:320px;
+    letter-spacing:0.2px;
+    position:relative;
+    margin-left:auto;
+    margin:0 auto 34px;
+ }
+
+ .form-title{
+    text-align:center;
+    font-size:30px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:8px;
+ }
+
+ 
+
+ 
+ .form-title{
+    margin-bottom:10px;
+    font-size:30px;
+    font-weight:700;
+    color:#111827;
+ }
+ .form-header{
+    text-align:center;
+    margin-bottom:32px;
+ }
+
+ .input_box label {
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+.login_form form,
+.signup_form form {
+  display: flex;
+  flex-direction: column;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* ---------- CARD ---------- */
+.login_form,
+.signup_form {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  padding: 40px 35px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- HEADER ---------- */
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ---------- FORM ---------- */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input_box {
+  margin-bottom: 20px;
+}
+
+.input_box label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.password_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.password_title a {
+  font-size: 13px;
+  color: #667eea;
+  text-decoration: none;
+}
+
+.password_title a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- INPUTS ---------- */
+.input_box input {
+  width: 100%;
+  height: 50px;
+  padding: 0 15px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input_box input:focus {
+  border-color: #667eea;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* ---------- BUTTON ---------- */
+button {
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 8px;
+  background: #667eea;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+button:hover {
+  background: #5a67d8;
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  background: #b5b9f3;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ---------- FOOTER ---------- */
+.sign_up {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 18px;
+  color: #374151;
+}
+
+.sign_up a {
+  color: #667eea;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.sign_up a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- TERMS ---------- */
+.terms {
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.terms input {
+  margin-right: 6px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #6a78e5, #7b5cc9);
+}
+
+/* CARD */
+.login_form,
+.signup_form {
+  width: 420px;
+  background: #ffffff;
+  padding: 42px 36px;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* HEADER */
+
+
+.form-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+
+
+/* FORM */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input_box {
+  margin-bottom: 16px;
+}
+
+.input_box label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.password_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.password_title a {
+  font-size: 13px;
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+/* INPUT */
+.input_box input {
+  width: 100%;
+  height: 54px;
+  padding: 0 16px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+.input_box input::placeholder {
+  color: #9ca3af;
+}
+
+.input_box input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  background: #ffffff;
+}
+
+/* BUTTON */
+button {
+  height: 56px;
+  border: none;
+  border-radius: 6px;
+  background: #6366f1;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 12px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(99, 102, 241, 0.4);
+}
+
+button:hover {
+  background: #4f46e5;
+}
+
+button:disabled {
+  background: #b5b9f3;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* FOOTER */
+.sign_up {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.sign_up a {
+  color: #4f46e5;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.terms {
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+.form-title {
+  font-size: 24px;
+  font-weight: 800;   /* ← heavier */
+  color: #111827;
+  letter-spacing: 0.3px;
+}
+
+.subtitle {
+  font-size: 15px;
+  font-weight: 600;   /* ← was too light before */
+  color: #4f46e5;
+}
+
+.input_box label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+.input_box input {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.input_box input::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+}
+button {
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+.sign_up {
+  font-size: 14.5px;
+  font-weight: 500;
+}
+
+/* ===== TERMS & CONDITIONS ===== */
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  color: #374151;
+  margin: 10px 0 14px;
+}
+
+.terms input {
+  width: 16px;
+  height: 16px;
+  accent-color: #6366f1;
+  cursor: pointer;
+}
+
+.terms label {
+  cursor: pointer;
+}
+
+.terms span {
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+.input_box label {
+  font-size: 17px;
+  font-weight: 600;
+  color: #111827;
+}
+.input_box input {
+  font-size: 15px;
+  font-weight: 500;
+}
+.input_box input::placeholder {
+  font-size: 16px;
+  font-weight: 500;   /* ← this matters */
+  color: #9ca3af;
+}
+button {
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+.sign_up {
+  font-size: 14.5px;
+  font-weight: 500;
+}
+/* ===== TERMS & CONDITIONS TEXT (IMPROVED FONT) ===== */
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 14px;
+}
+
+.terms input {
+  width: 16px;
+  height: 16px;
+  accent-color: #6366f1;
+  cursor: pointer;
+}
+
+.terms label {
+  font-size: 14px;
+  font-weight: 500;          /* softer than labels */
+  color: #4b5563;            /* muted professional gray */
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+/* Terms & Conditions link */
+.terms a {
+  font-weight: 600;          /* slightly stronger */
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
